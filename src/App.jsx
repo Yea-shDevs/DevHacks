@@ -9,22 +9,28 @@ import {
 } from "lucide-react";
 
 /* ---------------------------------------------------------------------- */
-/* DESIGN TOKENS                                                          */
-/* ink:#151A24  indigo:#1E2A55  teal:#0E9C86  amber:#F2A33C  bg:#F5F6F3   */
+/* DESIGN TOKENS  — Option 2: Fresh & Minimal                            */
+/* bg:#FFFFFF  surface:#F8FAFB  border:#E2E8F0  ink:#0F172A  teal:#0E9C86 */
 /* ---------------------------------------------------------------------- */
 const C = {
-  ink: "#151A24",
+  ink: "#0F172A",
+  inkLight: "#334155",
   indigo: "#1E2A55",
   indigoDeep: "#131C3B",
   teal: "#0E9C86",
+  tealLight: "#E6F7F4",
   tealDeep: "#0B7C6B",
-  amber: "#F2A33C",
-  amberDeep: "#D6852090",
-  bg: "#F5F6F3",
+  amber: "#F59E0B",
+  amberLight: "#FEF3C7",
+  bg: "#F8FAFB",
+  bgAlt: "#F1F5F9",
   card: "#FFFFFF",
-  line: "#E4E6E0",
-  muted: "#6B7180",
+  line: "#E2E8F0",
+  lineStrong: "#CBD5E1",
+  muted: "#64748B",
+  mutedLight: "#94A3B8",
 };
+
 
 /* ---------------------------------------------------------------------- */
 /* COPY / TRANSLATIONS                                                    */
@@ -76,14 +82,94 @@ const WORKER_CATEGORIES = [
 const ALL_CATEGORIES = [...PRO_CATEGORIES, ...WORKER_CATEGORIES];
 
 const WORKERS = [
-  { id: "w1", name: "Rahul Kumar", skill: "electrician", exp: "6 yrs", area: "Indirapuram", rate: "₹500–₹800", jobs: 42, rating: 4.7, reliability: 92, badges: ["identity", "skill", "community"], langs: ["Hindi", "Hinglish"], avatarColor: C.teal },
-  { id: "w2", name: "Suresh Yadav", skill: "electrician", exp: "9 yrs", area: "Vaishali", rate: "₹600–₹900", jobs: 78, rating: 4.9, reliability: 96, badges: ["identity", "skill", "community"], langs: ["Hindi"], avatarColor: C.indigo },
-  { id: "w3", name: "Aslam Sheikh", skill: "electrician", exp: "3 yrs", area: "Raj Nagar", rate: "₹400–₹700", jobs: 19, rating: 4.4, reliability: 84, badges: ["identity", "skill"], langs: ["Hindi", "English"], avatarColor: C.amber },
-  { id: "w4", name: "Vikram Singh", skill: "plumber", exp: "8 yrs", area: "Vasundhara", rate: "₹350–₹650", jobs: 61, rating: 4.6, reliability: 90, badges: ["identity", "skill", "community"], langs: ["Hindi"], avatarColor: C.teal },
-  { id: "w5", name: "Manoj Prajapati", skill: "carpenter", exp: "12 yrs", area: "Kaushambi", rate: "₹500–₹1000", jobs: 103, rating: 4.8, reliability: 95, badges: ["identity", "skill", "community"], langs: ["Hindi"], avatarColor: C.indigo },
-  { id: "w6", name: "Farhan Ali", skill: "painter", exp: "5 yrs", area: "Sahibabad", rate: "₹400/day", jobs: 34, rating: 4.5, reliability: 88, badges: ["identity", "skill"], langs: ["Hindi", "Hinglish"], avatarColor: C.amber },
-  { id: "w7", name: "Deepak Mishra", skill: "labourer", exp: "4 yrs", area: "Ghaziabad City", rate: "₹500/day", jobs: 27, rating: 4.3, reliability: 81, badges: ["identity"], langs: ["Hindi"], avatarColor: C.teal },
-  { id: "w8", name: "Ramesh Chand", skill: "loader", exp: "7 yrs", area: "Crossings Republik", rate: "₹450/day", jobs: 55, rating: 4.6, reliability: 89, badges: ["identity", "skill"], langs: ["Hindi"], avatarColor: C.indigo },
+  {
+    id: "w1", name: "Rahul Kumar", username: "@rahul.kumar", skill: "electrician", exp: "6 yrs",
+    area: "Indirapuram", rate: "₹500–₹800", jobs: 42, rating: 4.7, reliability: 92,
+    badges: ["identity", "skill", "community"], langs: ["Hindi", "Hinglish"], avatarColor: C.teal,
+    profilePic: "/default-avatar.png", joinedDate: "March 2024",
+    bio: "Experienced electrician specialising in house wiring, switchboard installation & repairs. Punctual and reliable.",
+    skills: ["Electrical Repair", "Wiring", "Switchboard", "MCB Fitting", "Fan Installation"],
+    totalReviews: 38, ratingBreakdown: { 5: 72, 4: 18, 3: 7, 2: 2, 1: 1 },
+    verification: { email: true, phone: true, identity: true, profile: true },
+    completedTasks: 42, projects: 6,
+  },
+  {
+    id: "w2", name: "Suresh Yadav", username: "@suresh.yadav", skill: "electrician", exp: "9 yrs",
+    area: "Vaishali", rate: "₹600–₹900", jobs: 78, rating: 4.9, reliability: 96,
+    badges: ["identity", "skill", "community"], langs: ["Hindi"], avatarColor: C.indigo,
+    profilePic: "/default-avatar.png", joinedDate: "January 2023",
+    bio: "Senior electrician with 9 years of field experience. Specialist in industrial and residential electrical systems.",
+    skills: ["Industrial Wiring", "Electrical Repair", "Panel Installation", "Cable Management"],
+    totalReviews: 71, ratingBreakdown: { 5: 85, 4: 12, 3: 2, 2: 1, 1: 0 },
+    verification: { email: true, phone: true, identity: true, profile: true },
+    completedTasks: 78, projects: 14,
+  },
+  {
+    id: "w3", name: "Aslam Sheikh", username: "@aslam.sheikh", skill: "electrician", exp: "3 yrs",
+    area: "Raj Nagar", rate: "₹400–₹700", jobs: 19, rating: 4.4, reliability: 84,
+    badges: ["identity", "skill"], langs: ["Hindi", "English"], avatarColor: C.amber,
+    profilePic: "/default-avatar.png", joinedDate: "August 2024",
+    bio: "Certified electrician for residential wiring and appliance installations. Available on short notice.",
+    skills: ["Residential Wiring", "Appliance Fitting", "Troubleshooting"],
+    totalReviews: 17, ratingBreakdown: { 5: 60, 4: 25, 3: 10, 2: 5, 1: 0 },
+    verification: { email: true, phone: true, identity: true, profile: false },
+    completedTasks: 19, projects: 3,
+  },
+  {
+    id: "w4", name: "Vikram Singh", username: "@vikram.singh", skill: "plumber", exp: "8 yrs",
+    area: "Vasundhara", rate: "₹350–₹650", jobs: 61, rating: 4.6, reliability: 90,
+    badges: ["identity", "skill", "community"], langs: ["Hindi"], avatarColor: C.teal,
+    profilePic: "/default-avatar.png", joinedDate: "June 2023",
+    bio: "Expert plumber for leak repairs, pipe fitting, bathroom fixtures and drain cleaning.",
+    skills: ["Leak Repair", "Pipe Fitting", "Bathroom Fixtures", "Drain Cleaning", "Water Heater"],
+    totalReviews: 55, ratingBreakdown: { 5: 68, 4: 20, 3: 8, 2: 3, 1: 1 },
+    verification: { email: true, phone: true, identity: true, profile: true },
+    completedTasks: 61, projects: 9,
+  },
+  {
+    id: "w5", name: "Manoj Prajapati", username: "@manoj.carpenter", skill: "carpenter", exp: "12 yrs",
+    area: "Kaushambi", rate: "₹500–₹1000", jobs: 103, rating: 4.8, reliability: 95,
+    badges: ["identity", "skill", "community"], langs: ["Hindi"], avatarColor: C.indigo,
+    profilePic: "/default-avatar.png", joinedDate: "October 2022",
+    bio: "Master carpenter with 12 years of experience in furniture making, wooden fittings and interior woodwork.",
+    skills: ["Furniture Making", "Wooden Fixtures", "Door & Window Fitting", "Interior Woodwork", "Polish"],
+    totalReviews: 97, ratingBreakdown: { 5: 80, 4: 14, 3: 4, 2: 1, 1: 1 },
+    verification: { email: true, phone: true, identity: true, profile: true },
+    completedTasks: 103, projects: 18,
+  },
+  {
+    id: "w6", name: "Farhan Ali", username: "@farhan.painter", skill: "painter", exp: "5 yrs",
+    area: "Sahibabad", rate: "₹400/day", jobs: 34, rating: 4.5, reliability: 88,
+    badges: ["identity", "skill"], langs: ["Hindi", "Hinglish"], avatarColor: C.amber,
+    profilePic: "/default-avatar.png", joinedDate: "April 2024",
+    bio: "Professional painter for interior and exterior walls. Uses premium materials and delivers clean finishes.",
+    skills: ["Interior Painting", "Exterior Painting", "Texture Finish", "Wall Putty", "Waterproofing"],
+    totalReviews: 30, ratingBreakdown: { 5: 63, 4: 23, 3: 10, 2: 3, 1: 1 },
+    verification: { email: true, phone: true, identity: true, profile: false },
+    completedTasks: 34, projects: 7,
+  },
+  {
+    id: "w7", name: "Deepak Mishra", username: "@deepak.mishra", skill: "labourer", exp: "4 yrs",
+    area: "Ghaziabad City", rate: "₹500/day", jobs: 27, rating: 4.3, reliability: 81,
+    badges: ["identity"], langs: ["Hindi"], avatarColor: C.teal,
+    profilePic: "/default-avatar.png", joinedDate: "July 2024",
+    bio: "Hard-working general labourer available for construction, loading and site assistance work.",
+    skills: ["Construction Work", "Loading", "Site Assistance", "Material Handling"],
+    totalReviews: 22, ratingBreakdown: { 5: 55, 4: 25, 3: 12, 2: 6, 1: 2 },
+    verification: { email: true, phone: true, identity: false, profile: false },
+    completedTasks: 27, projects: 4,
+  },
+  {
+    id: "w8", name: "Ramesh Chand", username: "@ramesh.chand", skill: "loader", exp: "7 yrs",
+    area: "Crossings Republik", rate: "₹450/day", jobs: 55, rating: 4.6, reliability: 89,
+    badges: ["identity", "skill"], langs: ["Hindi"], avatarColor: C.indigo,
+    profilePic: "/default-avatar.png", joinedDate: "February 2023",
+    bio: "Experienced loader and mover. Handles household shifting, goods loading/unloading with care.",
+    skills: ["Household Shifting", "Loading & Unloading", "Packing", "Heavy Lifting"],
+    totalReviews: 49, ratingBreakdown: { 5: 67, 4: 22, 3: 8, 2: 2, 1: 1 },
+    verification: { email: true, phone: true, identity: true, profile: false },
+    completedTasks: 55, projects: 10,
+  },
 ];
 
 const CUSTOMERS = ["Priya Sharma", "Anita Verma", "Rohit Gupta", "Sunita Devi", "Karan Malhotra"];
@@ -99,12 +185,36 @@ const STAGES = ["REQUEST CREATED", "WORKER MATCHED", "WORKER ACCEPTED", "WORK IN
 /* ---------------------------------------------------------------------- */
 /* SMALL UI PRIMITIVES                                                    */
 /* ---------------------------------------------------------------------- */
-function Avatar({ name, color, size = 48 }) {
+function Avatar({ name, color, size = 48, profilePic, onClick }) {
   const initials = name.split(" ").map((p) => p[0]).slice(0, 2).join("");
+  const fontSize = size <= 32 ? 11 : size <= 48 ? 14 : 18;
+  if (profilePic) {
+    return (
+      <img
+        src={profilePic}
+        alt={name}
+        onClick={onClick}
+        style={{ width: size, height: size, objectFit: "cover", cursor: onClick ? "pointer" : "default" }}
+        className={`rounded-full shrink-0 shadow-sm ${onClick ? "hover:ring-2 hover:ring-teal-400 transition-all" : ""}`}
+      />
+    );
+  }
+  if (!color) {
+    return (
+      <img
+        src="/default-avatar.png"
+        alt={name}
+        onClick={onClick}
+        style={{ width: size, height: size, objectFit: "cover", cursor: onClick ? "pointer" : "default" }}
+        className={`rounded-full shrink-0 shadow-sm bg-slate-100 ${onClick ? "hover:ring-2 hover:ring-teal-400 transition-all" : ""}`}
+      />
+    );
+  }
   return (
     <div
-      style={{ width: size, height: size, background: color, color: "#fff", fontWeight: 700 }}
-      className="rounded-full flex items-center justify-center shrink-0"
+      onClick={onClick}
+      style={{ width: size, height: size, background: color, color: "#fff", fontWeight: 700, fontSize, cursor: onClick ? "pointer" : "default" }}
+      className={`rounded-full flex items-center justify-center shrink-0 shadow-sm ${onClick ? "hover:ring-2 hover:ring-teal-400 transition-all" : ""}`}
     >
       {initials}
     </div>
@@ -113,36 +223,36 @@ function Avatar({ name, color, size = 48 }) {
 
 function Badge({ children, tone = "teal" }) {
   const map = {
-    teal: { bg: "#E6F5F2", fg: C.tealDeep },
-    amber: { bg: "#FCEEDA", fg: "#9A5F0F" },
-    indigo: { bg: "#E7EAF3", fg: C.indigo },
-    grey: { bg: "#EEEFEC", fg: C.muted },
+    teal: { bg: "#DCFAF4", fg: "#0B7C6B" },
+    amber: { bg: "#FEF3C7", fg: "#92400E" },
+    indigo: { bg: "#EEF2FF", fg: "#3730A3" },
+    grey: { bg: "#F1F5F9", fg: C.muted },
   };
   const s = map[tone];
   return (
-    <span style={{ background: s.bg, color: s.fg }} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold">
+    <span style={{ background: s.bg, color: s.fg }} className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
       {children}
     </span>
   );
 }
 
-function Btn({ children, onClick, variant = "primary", full, icon: Icon, size = "md", disabled }) {
-  const base = "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition active:scale-[0.98] disabled:opacity-50";
-  const sizes = { md: "px-5 py-3 text-sm", lg: "px-6 py-4 text-base", xl: "px-8 py-5 text-lg" };
+function Btn({ children, onClick, variant = "primary", full, icon: Icon, size = "md", disabled, style: extraStyle }) {
+  const base = "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-150 active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed";
+  const sizes = { md: "px-5 py-2.5 text-sm", lg: "px-7 py-3.5 text-base", xl: "px-9 py-4 text-lg" };
   const variants = {
-    primary: { background: C.indigo, color: "#fff" },
-    teal: { background: C.teal, color: "#fff" },
-    amber: { background: C.amber, color: "#1a1200" },
-    outline: { background: "transparent", color: C.indigo, border: `1.5px solid ${C.indigo}` },
-    ghost: { background: "#fff", color: C.ink, border: `1px solid ${C.line}` },
-    danger: { background: "#FBE9E7", color: "#B23A2E" },
+    primary: { background: C.indigo, color: "#fff", boxShadow: "0 1px 3px rgba(30,42,85,0.25)" },
+    teal: { background: C.teal, color: "#fff", boxShadow: "0 1px 3px rgba(14,156,134,0.3)" },
+    amber: { background: C.amber, color: "#1a1200", boxShadow: "0 1px 3px rgba(245,158,11,0.3)" },
+    outline: { background: "transparent", color: C.ink, border: `1.5px solid ${C.lineStrong}` },
+    ghost: { background: C.card, color: C.ink, border: `1px solid ${C.line}`, boxShadow: "0 1px 2px rgba(0,0,0,0.04)" },
+    danger: { background: "#FEE2E2", color: "#B91C1C" },
   };
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      style={variants[variant]}
-      className={`${base} ${sizes[size]} ${full ? "w-full" : ""}`}
+      style={{ ...variants[variant], ...extraStyle }}
+      className={`${base} ${sizes[size]} ${full ? "w-full" : ""} hover:opacity-90 hover:-translate-y-px`}
     >
       {Icon && <Icon size={size === "xl" ? 24 : 18} />}
       {children}
@@ -154,8 +264,13 @@ function Card({ children, className = "", style = {}, onClick }) {
   return (
     <div
       onClick={onClick}
-      style={{ background: C.card, border: `1px solid ${C.line}`, ...style }}
-      className={`rounded-2xl ${onClick ? "cursor-pointer hover:shadow-md transition" : ""} ${className}`}
+      style={{
+        background: C.card,
+        border: `1px solid ${C.line}`,
+        boxShadow: "0 1px 4px rgba(0,0,0,0.05), 0 0 0 0 transparent",
+        ...style,
+      }}
+      className={`rounded-2xl ${onClick ? "cursor-pointer hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200" : ""} ${className}`}
     >
       {children}
     </div>
@@ -163,8 +278,282 @@ function Card({ children, className = "", style = {}, onClick }) {
 }
 
 function SectionLabel({ children }) {
-  return <div style={{ color: C.teal }} className="text-sm font-bold tracking-wide mb-2">{children}</div>;
+  return (
+    <div className="flex items-center gap-2 mb-2">
+      <div style={{ width: 3, height: 16, background: C.teal, borderRadius: 99 }} />
+      <span style={{ color: C.teal }} className="text-xs font-bold tracking-widest uppercase">{children}</span>
+    </div>
+  );
 }
+
+/* ---------------------------------------------------------------------- */
+/* PROFILE MODAL                                                          */
+/* ---------------------------------------------------------------------- */
+
+/** Hook: open/close profile modal from anywhere */
+function useProfileModal() {
+  const [profileUser, setProfileUser] = useState(null);
+  const openProfile = (user) => setProfileUser(user);
+  const closeProfile = () => setProfileUser(null);
+  return { profileUser, openProfile, closeProfile };
+}
+
+function ProfileModal({ user, onClose }) {
+  // Escape key + body scroll lock
+  useEffect(() => {
+    const handler = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", handler);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handler);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  if (!user) return null;
+
+  const isVerified = user.badges?.includes("identity") && user.badges?.includes("skill");
+  const ratingPct = (v) => `${v}%`;
+
+  const verifications = [
+    { label: "Email Verified",    ok: user.verification?.email    ?? false },
+    { label: "Phone Verified",    ok: user.verification?.phone    ?? false },
+    { label: "Identity Verified", ok: user.verification?.identity ?? false },
+    { label: "Profile Verified",  ok: user.verification?.profile  ?? false },
+  ];
+
+  return (
+    /* ── Backdrop ── */
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{
+        background: "rgba(15,23,42,0.55)",
+        backdropFilter: "blur(6px)",
+        WebkitBackdropFilter: "blur(6px)",
+        animation: "pmFadeIn 0.2s ease",
+      }}
+      onClick={onClose}
+    >
+      {/* ── Modal card ── */}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full overflow-y-auto"
+        style={{
+          maxWidth: 520,
+          maxHeight: "90vh",
+          background: "rgba(255,255,255,0.97)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(226,232,240,0.9)",
+          borderRadius: 24,
+          boxShadow: "0 25px 60px rgba(15,23,42,0.18), 0 0 0 1px rgba(255,255,255,0.6) inset",
+          animation: "pmSlideIn 0.25s cubic-bezier(0.34,1.3,0.64,1)",
+        }}
+      >
+        {/* ── Gradient header band ── */}
+        <div
+          className="relative h-28 rounded-t-3xl"
+          style={{
+            background: `linear-gradient(135deg, ${user.avatarColor || C.teal}22 0%, #EEF2FF 100%)`,
+            borderBottom: `1px solid ${C.line}`,
+          }}
+        >
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-black/10"
+            style={{ color: C.muted }}
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        {/* ── Avatar (overlaps header) ── */}
+        <div className="px-6 pb-5">
+          <div className="flex items-end gap-4 -mt-12 mb-4">
+            <div className="relative">
+              {user.profilePic ? (
+                <img
+                  src={user.profilePic}
+                  alt={user.name}
+                  className="rounded-2xl object-cover"
+                  style={{ width: 88, height: 88, border: "3px solid #fff", boxShadow: "0 4px 14px rgba(0,0,0,0.12)" }}
+                />
+              ) : (
+                <div
+                  className="rounded-2xl flex items-center justify-center font-black text-white text-2xl"
+                  style={{
+                    width: 88, height: 88,
+                    background: user.avatarColor || C.teal,
+                    border: "3px solid #fff",
+                    boxShadow: "0 4px 14px rgba(0,0,0,0.12)",
+                  }}
+                >
+                  {user.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
+                </div>
+              )}
+              {isVerified && (
+                <div
+                  className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center"
+                  style={{ background: C.teal, border: "2px solid #fff" }}
+                  title="Verified Worker"
+                >
+                  <Check size={11} color="#fff" strokeWidth={3} />
+                </div>
+              )}
+            </div>
+
+            {/* Name / username / badges */}
+            <div className="pb-1 flex-1 min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-black text-xl" style={{ color: C.ink }}>{user.name}</span>
+                {isVerified && (
+                  <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: "#DCFAF4", color: "#0B7C6B" }}>
+                    ✓ Verified
+                  </span>
+                )}
+              </div>
+              <div className="text-sm mt-0.5" style={{ color: C.muted }}>{user.username || `@${user.name.toLowerCase().replace(" ", ".")}`}</div>
+              <div className="text-xs mt-0.5 flex items-center gap-1" style={{ color: C.mutedLight }}>
+                <MapPin size={11} /> {user.area}
+              </div>
+            </div>
+          </div>
+
+          {/* Bio */}
+          {user.bio && (
+            <p className="text-sm leading-relaxed mb-5" style={{ color: C.inkLight }}>
+              {user.bio}
+            </p>
+          )}
+
+          {/* ── Stats row ── */}
+          <div className="grid grid-cols-4 gap-2 mb-5">
+            {[
+              { label: "Jobs Done",  value: user.completedTasks ?? user.jobs },
+              { label: "Reviews",    value: user.totalReviews ?? user.jobs },
+              { label: "Projects",   value: user.projects ?? "—" },
+              { label: "Reliability", value: `${user.reliability}%` },
+            ].map(({ label, value }) => (
+              <div key={label} className="rounded-xl p-3 text-center" style={{ background: C.bg, border: `1px solid ${C.line}` }}>
+                <div className="font-black text-base" style={{ color: C.teal }}>{value}</div>
+                <div className="text-[10px] mt-0.5 leading-tight" style={{ color: C.muted }}>{label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Rating section ── */}
+          <div className="mb-5 rounded-2xl p-4" style={{ background: C.bg, border: `1px solid ${C.line}` }}>
+            <div className="flex items-center gap-4 mb-3">
+              <div>
+                <div className="font-black text-4xl" style={{ color: C.ink }}>{user.rating.toFixed(1)}</div>
+                <div className="text-xs" style={{ color: C.muted }}>out of 5.0</div>
+              </div>
+              <div className="flex-1">
+                <div className="flex gap-0.5 mb-1">
+                  {[1,2,3,4,5].map((i) => (
+                    <Star key={i} size={16} fill={i <= Math.round(user.rating) ? C.amber : "#E2E8F0"} color={i <= Math.round(user.rating) ? C.amber : "#E2E8F0"} />
+                  ))}
+                </div>
+                <div className="text-xs" style={{ color: C.muted }}>
+                  Based on {user.totalReviews ?? user.jobs} reviews
+                </div>
+              </div>
+            </div>
+            {/* Rating bars */}
+            <div className="flex flex-col gap-1.5">
+              {[5,4,3,2,1].map((star) => {
+                const pct = user.ratingBreakdown?.[star] ?? 0;
+                return (
+                  <div key={star} className="flex items-center gap-2">
+                    <span className="text-xs font-semibold w-6 text-right shrink-0" style={{ color: C.muted }}>{star} ★</span>
+                    <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: C.line }}>
+                      <div
+                        className="h-2 rounded-full transition-all duration-700"
+                        style={{ width: ratingPct(pct), background: pct >= 60 ? C.teal : pct >= 30 ? C.amber : "#F87171" }}
+                      />
+                    </div>
+                    <span className="text-xs w-8 shrink-0" style={{ color: C.muted }}>{pct}%</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ── Verification section ── */}
+          <div className="mb-5">
+            <div className="text-xs font-bold tracking-widest uppercase mb-2 flex items-center gap-2" style={{ color: C.teal }}>
+              <div style={{ width: 3, height: 14, background: C.teal, borderRadius: 99 }} /> Verification
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {verifications.map(({ label, ok }) => (
+                <div key={label} className="flex items-center gap-2 text-sm rounded-xl px-3 py-2.5" style={{ background: ok ? "#F0FDF9" : C.bg, border: `1px solid ${ok ? "#B2F5EA" : C.line}` }}>
+                  {ok
+                    ? <CheckCircle2 size={15} color="#0B7C6B" className="shrink-0" />
+                    : <div className="w-3.5 h-3.5 rounded-full border-2 shrink-0" style={{ borderColor: C.lineStrong }} />
+                  }
+                  <span className="text-xs font-medium" style={{ color: ok ? "#0B7C6B" : C.muted }}>{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── User info grid ── */}
+          <div className="mb-5 rounded-2xl p-4" style={{ background: C.bg, border: `1px solid ${C.line}` }}>
+            <div className="text-xs font-bold tracking-widest uppercase mb-3 flex items-center gap-2" style={{ color: C.teal }}>
+              <div style={{ width: 3, height: 14, background: C.teal, borderRadius: 99 }} /> Information
+            </div>
+            {[
+              ["Full Name",   user.name],
+              ["Username",    user.username || `@${user.name.toLowerCase().replace(" ", ".")}`],
+              ["Location",    user.area],
+              ["Experience",  user.exp],
+              ["Rate",        user.rate],
+              ["Languages",   user.langs?.join(", ")],
+              ["Joined",      user.joinedDate || "2024"],
+            ].map(([k, v]) => v && (
+              <div key={k} className="flex justify-between items-center py-1.5 border-b last:border-0" style={{ borderColor: C.line }}>
+                <span className="text-xs" style={{ color: C.muted }}>{k}</span>
+                <span className="text-xs font-semibold text-right" style={{ color: C.inkLight, maxWidth: "60%" }}>{v}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Skills section ── */}
+          {user.skills?.length > 0 && (
+            <div className="mb-6">
+              <div className="text-xs font-bold tracking-widest uppercase mb-2 flex items-center gap-2" style={{ color: C.teal }}>
+                <div style={{ width: 3, height: 14, background: C.teal, borderRadius: 99 }} /> Skills
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {user.skills.map((s) => (
+                  <span key={s} className="px-3 py-1.5 rounded-full text-xs font-semibold" style={{ background: C.tealLight, color: C.tealDeep, border: `1px solid #B2E8DF` }}>
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ── Action buttons ── */}
+          <div className="flex gap-2 flex-wrap">
+            <Btn variant="teal" icon={User} onClick={() => alert("Full profile coming soon!")}>View Full Profile</Btn>
+            <Btn variant="outline" icon={Handshake} onClick={() => alert("Connect feature coming soon!")}>Connect</Btn>
+            <Btn variant="ghost" icon={MessageCircle} onClick={() => alert("Messaging coming soon!")}>Message</Btn>
+          </div>
+        </div>
+      </div>
+
+      {/* CSS keyframe animations injected once */}
+      <style>{`
+        @keyframes pmFadeIn  { from { opacity:0 } to { opacity:1 } }
+        @keyframes pmSlideIn { from { opacity:0; transform:scale(0.92) translateY(8px) } to { opacity:1; transform:scale(1) translateY(0) } }
+      `}</style>
+    </div>
+  );
+}
+
+
 
 function TrustBadgeExplainer() {
   const items = [
@@ -229,14 +618,22 @@ function catName(catId) {
 /* ---------------------------------------------------------------------- */
 function TopBar({ title, onBack, right }) {
   return (
-    <div className="sticky top-0 z-20 flex items-center justify-between px-4 py-3" style={{ background: C.card, borderBottom: `1px solid ${C.line}` }}>
+    <div
+      className="sticky top-0 z-20 flex items-center justify-between px-4 py-3"
+      style={{
+        background: "rgba(255,255,255,0.85)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderBottom: `1px solid ${C.line}`,
+      }}
+    >
       <div className="flex items-center gap-2">
         {onBack && (
-          <button onClick={onBack} className="p-1.5 rounded-lg hover:bg-black/5">
-            <ChevronLeft size={22} />
+          <button onClick={onBack} className="p-1.5 rounded-full hover:bg-slate-100 transition-colors">
+            <ChevronLeft size={20} color={C.inkLight} />
           </button>
         )}
-        <span className="font-bold text-lg" style={{ color: C.indigo }}>{title}</span>
+        <span className="font-bold text-base" style={{ color: C.ink }}>{title}</span>
       </div>
       {right}
     </div>
@@ -245,192 +642,297 @@ function TopBar({ title, onBack, right }) {
 
 function BottomNav({ items, active, onChange }) {
   return (
-    <div className="sticky bottom-0 z-20 grid" style={{ gridTemplateColumns: `repeat(${items.length},1fr)`, background: C.card, borderTop: `1px solid ${C.line}` }}>
+    <div
+      className="sticky bottom-0 z-20 grid"
+      style={{
+        gridTemplateColumns: `repeat(${items.length},1fr)`,
+        background: "rgba(255,255,255,0.9)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderTop: `1px solid ${C.line}`,
+      }}
+    >
       {items.map((it) => (
-        <button key={it.key} onClick={() => onChange(it.key)} className="flex flex-col items-center gap-1 py-2.5">
-          <it.icon size={22} color={active === it.key ? C.teal : C.muted} />
-          <span className="text-[11px] font-semibold" style={{ color: active === it.key ? C.teal : C.muted }}>{it.label}</span>
+        <button key={it.key} onClick={() => onChange(it.key)} className="flex flex-col items-center gap-1 py-3 relative">
+          {active === it.key && (
+            <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 24, height: 2.5, background: C.teal, borderRadius: 99 }} />
+          )}
+          <it.icon size={21} color={active === it.key ? C.teal : C.mutedLight} />
+          <span className="text-[10px] font-semibold" style={{ color: active === it.key ? C.teal : C.mutedLight }}>{it.label}</span>
         </button>
       ))}
     </div>
   );
 }
 
+
 /* ---------------------------------------------------------------------- */
-/* LANDING PAGE                                                           */
+/* LANDING PAGE  — Option 2: Fresh & Minimal                             */
 /* ---------------------------------------------------------------------- */
 function Landing({ goto }) {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const { profileUser, openProfile, closeProfile } = useProfileModal();
+  const filters = [
+    { id: "all", label: "All Services" },
+    { id: "plumber", label: "Plumber" },
+    { id: "electrician", label: "Electrician" },
+    { id: "carpenter", label: "Carpenter" },
+    { id: "painter", label: "Painter" },
+    { id: "cleaner", label: "Cleaner" },
+    { id: "labourer", label: "Daily Labourer" },
+  ];
+  const filteredWorkers = activeFilter === "all"
+    ? WORKERS.slice(0, 3)
+    : WORKERS.filter((w) => w.skill === activeFilter).slice(0, 3);
+
   return (
-    <div style={{ background: C.bg, color: C.ink }} className="min-h-full">
-      {/* Header */}
-      <div className="flex items-center justify-between px-6 py-5 max-w-6xl mx-auto">
+    <div style={{ background: "#ffffff", color: C.ink, fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif" }} className="min-h-full">
+
+      {/* ── Sticky Nav ── */}
+      <nav
+        className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 max-w-7xl mx-auto"
+        style={{
+          background: "rgba(255,255,255,0.88)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          borderBottom: `1px solid ${C.line}`,
+        }}
+      >
+        <div className="flex items-center gap-2.5">
+          <div style={{ background: C.teal }} className="w-8 h-8 rounded-xl flex items-center justify-center shadow-sm">
+            <span style={{ color: "#fff" }} className="font-black text-base">S</span>
+          </div>
+          <span className="font-black text-lg tracking-tight" style={{ color: C.ink }}>SOLVO</span>
+        </div>
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium" style={{ color: C.muted }}>
+          <a href="#workers" className="hover:text-teal-600 transition-colors" style={{ color: "inherit" }}>Workers</a>
+          <a href="#how" className="hover:text-teal-600 transition-colors" style={{ color: "inherit" }}>How it works</a>
+          <a href="#access" className="hover:text-teal-600 transition-colors" style={{ color: "inherit" }}>Access</a>
+        </div>
         <div className="flex items-center gap-2">
-          <div style={{ background: C.indigo }} className="w-9 h-9 rounded-lg flex items-center justify-center">
-            <span style={{ color: C.amber }} className="font-black text-lg">S</span>
-          </div>
-          <span className="font-black text-xl tracking-tight" style={{ color: C.indigo }}>SOLVO</span>
-        </div>
-        <div className="hidden md:flex items-center gap-6 text-sm font-semibold" style={{ color: C.ink }}>
-          <a href="#how" className="hover:opacity-70">How it works</a>
-          <a href="#categories" className="hover:opacity-70">Categories</a>
-          <a href="#access" className="hover:opacity-70">Access for everyone</a>
-        </div>
-        <div className="flex gap-2">
           <Btn variant="ghost" onClick={() => goto("roleSelect")}>Log in</Btn>
+          <Btn variant="teal" onClick={() => goto("roleSelect")}>Get Started</Btn>
         </div>
-      </div>
+      </nav>
 
-      {/* Hero */}
-      <div className="max-w-6xl mx-auto px-6 pt-8 pb-16 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <Badge tone="amber">Ghaziabad · Delhi NCR</Badge>
-          <h1 className="mt-4 font-black leading-[1.05]" style={{ fontSize: "clamp(2.4rem,5vw,3.6rem)", color: C.indigo }}>
-            Work Without Barriers.
-          </h1>
-          <p className="mt-5 text-lg" style={{ color: C.muted, maxWidth: 480 }}>
-            SOLVO connects skilled hands with real opportunities through smartphones, voice assistance, basic phones, and community support.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Btn variant="teal" size="lg" icon={Search} onClick={() => goto("roleSelect", "customer")}>Find a Worker</Btn>
-            <Btn variant="primary" size="lg" icon={Briefcase} onClick={() => goto("roleSelect", "worker")}>Find Work</Btn>
-          </div>
-          <a href="#how" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style={{ color: C.indigo }}>
-            Explore How SOLVO Works <ArrowRight size={15} />
-          </a>
+      {/* ── Hero ── */}
+      <div className="max-w-3xl mx-auto px-6 pt-20 pb-16 text-center">
+        <Badge tone="teal">Ghaziabad · Delhi NCR · Now live</Badge>
+        <h1
+          className="mt-6 font-black leading-[1.08] tracking-tight"
+          style={{ fontSize: "clamp(2.6rem, 6vw, 4rem)", color: C.ink }}
+        >
+          Every skilled hand<br />
+          <span style={{ color: C.teal }}>deserves an opportunity.</span>
+        </h1>
+        <p className="mt-5 text-lg leading-relaxed mx-auto" style={{ color: C.muted, maxWidth: 520 }}>
+          SOLVO connects customers with verified local workers — through an app, by voice, or even a basic phone call.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Btn variant="teal" size="lg" icon={Search} onClick={() => goto("roleSelect", "customer")}>Find a Worker</Btn>
+          <Btn variant="outline" size="lg" icon={Briefcase} onClick={() => goto("roleSelect", "worker")}>Find Work</Btn>
         </div>
-        <div className="relative">
-          <Card className="p-6" style={{ background: C.indigoDeep, border: "none" }}>
-            <div className="text-white/70 text-xs font-bold tracking-wide mb-4">ONE WORKER · ONE NETWORK · MANY DOORS IN</div>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { icon: Home, label: "Smartphone App" },
-                { icon: Mic, label: "Voice Assistance" },
-                { icon: Phone, label: "Basic Phone / IVR" },
-                { icon: Handshake, label: "Community Partner" },
-              ].map((d) => (
-                <div key={d.label} className="rounded-xl p-4 flex flex-col gap-3" style={{ background: "rgba(255,255,255,0.06)" }}>
-                  <d.icon size={22} color={C.amber} />
-                  <span className="text-white text-sm font-semibold">{d.label}</span>
-                </div>
-              ))}
+        {/* Stats strip */}
+        <div className="mt-14 grid grid-cols-3 gap-4 max-w-md mx-auto">
+          {[["8+", "Workers"], ["12+", "Bookings"], ["4.7★", "Avg Rating"]].map(([v, l]) => (
+            <div key={l} className="rounded-2xl p-4" style={{ background: C.bg, border: `1px solid ${C.line}` }}>
+              <div className="font-black text-xl" style={{ color: C.teal }}>{v}</div>
+              <div className="text-xs mt-0.5" style={{ color: C.muted }}>{l}</div>
             </div>
-            <div className="mt-4 rounded-xl p-4 flex items-center gap-3" style={{ background: C.teal }}>
-              <CircleDot size={18} className="text-white" />
-              <span className="text-white text-sm font-bold">All roads lead to one worker profile</span>
-            </div>
-          </Card>
-        </div>
-      </div>
-
-      {/* Categories */}
-      <div id="categories" className="max-w-6xl mx-auto px-6 py-14">
-        <SectionLabel>What you can get done</SectionLabel>
-        <h2 className="font-black text-3xl mb-8" style={{ color: C.indigo }}>Book a Professional, or hire workers for the day.</h2>
-        <div className="grid sm:grid-cols-2 gap-6">
-          <div>
-            <div className="font-bold mb-3">Book a Professional</div>
-            <div className="grid grid-cols-3 gap-3">
-              {PRO_CATEGORIES.map((c) => (
-                <Card key={c.id} className="p-4 flex flex-col items-center gap-2 text-center" onClick={() => goto("roleSelect", "customer")}>
-                  <c.icon size={24} color={C.teal} />
-                  <span className="text-xs font-semibold">{c.name}</span>
-                </Card>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div className="font-bold mb-3">Hire Workers</div>
-            <div className="grid grid-cols-3 gap-3">
-              {WORKER_CATEGORIES.map((c) => (
-                <Card key={c.id} className="p-4 flex flex-col items-center gap-2 text-center" onClick={() => goto("roleSelect", "customer")}>
-                  <c.icon size={24} color={C.indigo} />
-                  <span className="text-xs font-semibold">{c.name}</span>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* How it works */}
-      <div id="how" style={{ background: "#EFF1EC" }} className="py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <SectionLabel>How SOLVO works</SectionLabel>
-          <h2 className="font-black text-3xl mb-10" style={{ color: C.indigo }}>From a problem at home to a job well done.</h2>
-          <div className="grid md:grid-cols-3 gap-4 mb-12">
-            {[
-              ["Choose a Service", "Select the type of worker needed."],
-              ["Describe the Work", "Use text, an image, or your voice."],
-              ["Get Matched", "SOLVO finds suitable nearby workers."],
-              ["Worker Accepts", "The worker receives and accepts the opportunity."],
-              ["Work Gets Done", "Track progress until completion."],
-              ["Pay and Review", "Complete payment and rate the experience."],
-            ].map(([t, d], i) => (
-              <Card key={t} className="p-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <div style={{ background: C.indigo }} className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold">{i + 1}</div>
-                  <div className="font-bold">{t}</div>
-                </div>
-                <div className="text-sm" style={{ color: C.muted }}>{d}</div>
-              </Card>
-            ))}
-          </div>
-          <div className="rounded-2xl p-6" style={{ background: C.indigo }}>
-            <div className="text-amber-200/90 text-xs font-bold tracking-wide mb-3" style={{ color: C.amber }}>FOR WORKERS — KEPT SIMPLE ON PURPOSE</div>
-            <div className="flex flex-wrap items-center gap-3 text-white font-bold text-lg">
-              {["Available", "Receive Job", "Accept", "Complete", "Earn"].map((s, i, arr) => (
-                <React.Fragment key={s}>
-                  <span className="px-4 py-2 rounded-lg" style={{ background: "rgba(255,255,255,0.1)" }}>{s}</span>
-                  {i < arr.length - 1 && <ArrowRight size={18} color={C.amber} />}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Access methods */}
-      <div id="access" className="max-w-6xl mx-auto px-6 py-16">
-        <SectionLabel>Built for real access, not assumed access</SectionLabel>
-        <h2 className="font-black text-3xl mb-8" style={{ color: C.indigo }}>One work network. Four ways in.</h2>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            [Home, "Smartphone / Web", "A full app for customers, workers and admins."],
-            [Mic, "Voice Assistance", "Speak commands — accept jobs, check earnings, switch language."],
-            [Phone, "Basic Phone (IVR/SMS)", "No smartphone needed. Press 1 to accept, reply YES by SMS."],
-            [Handshake, "Assisted Onboarding", "Local partners help workers build a profile in person."],
-          ].map(([Icon, t, d]) => (
-            <Card key={t} className="p-5">
-              <Icon size={24} color={C.teal} className="mb-3" />
-              <div className="font-bold mb-1">{t}</div>
-              <div className="text-sm" style={{ color: C.muted }}>{d}</div>
-            </Card>
           ))}
         </div>
-        <div className="mt-6">
-          <Btn variant="outline" icon={Phone} onClick={() => goto("access")}>See SOLVO Access demo (IVR / SMS / Voice)</Btn>
+      </div>
+
+      {/* ── Top Rated Workers ── */}
+      <div id="workers" className="max-w-5xl mx-auto px-6 py-12">
+        <div className="text-center mb-8">
+          <SectionLabel>Verified Professionals</SectionLabel>
+          <h2 className="font-black text-3xl mt-1" style={{ color: C.ink }}>Top Rated Workers</h2>
+          <p className="mt-2 text-sm" style={{ color: C.muted }}>Click any worker card to view their full profile.</p>
+        </div>
+
+        {/* Filter chips */}
+        <div className="flex gap-2 overflow-x-auto pb-2 mb-6" style={{ scrollbarWidth: "none" }}>
+          {filters.map((f) => (
+            <button
+              key={f.id}
+              onClick={() => setActiveFilter(f.id)}
+              className="shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-150"
+              style={{
+                background: activeFilter === f.id ? C.teal : C.bg,
+                color: activeFilter === f.id ? "#fff" : C.muted,
+                border: `1px solid ${activeFilter === f.id ? C.teal : C.line}`,
+              }}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Worker cards */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+          {(filteredWorkers.length > 0 ? filteredWorkers : WORKERS.slice(0, 3)).map((w) => (
+            <div
+              key={w.id}
+              className="rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-200 hover:shadow-xl hover:-translate-y-1"
+              style={{ background: C.card, border: `1px solid ${C.line}`, boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
+            >
+              <Avatar name={w.name} color={w.avatarColor} size={72} profilePic={w.profilePic} onClick={() => openProfile(w)} />
+              <button onClick={() => openProfile(w)} className="font-bold text-base mt-3 hover:underline text-left w-full text-center" style={{ color: C.ink }}>{w.name}</button>
+              <div className="text-sm mt-0.5" style={{ color: C.muted }}>{catName(w.skill)} · {w.area}</div>
+              <div className="flex items-center justify-center gap-1 mt-2">
+                {[1,2,3,4,5].map((i) => (
+                  <Star key={i} size={13} fill={i <= Math.round(w.rating) ? C.amber : "none"} color={C.amber} />
+                ))}
+                <span className="text-xs ml-1 font-semibold" style={{ color: C.muted }}>{w.rating} ({w.jobs} jobs)</span>
+              </div>
+              <div className="flex gap-1.5 mt-3 flex-wrap justify-center">
+                {w.badges.includes("identity") && <Badge tone="indigo">✓ Identity</Badge>}
+                {w.badges.includes("skill") && <Badge tone="teal">✓ Skill</Badge>}
+                {w.badges.includes("community") && <Badge tone="amber">★ Trusted</Badge>}
+              </div>
+              <div className="flex gap-2 mt-4 w-full">
+                <Btn full variant="ghost" onClick={() => openProfile(w)}>
+                  View Profile
+                </Btn>
+                <Btn full variant="teal" onClick={() => goto("roleSelect", "customer")}>
+                  Book
+                </Btn>
+              </div>
+            </div>
+          ))}
+        </div>
+        {filteredWorkers.length === 0 && (
+          <p className="text-center py-8 text-sm" style={{ color: C.muted }}>No workers in this category yet.</p>
+        )}
+      </div>
+
+      {profileUser && <ProfileModal user={profileUser} onClose={closeProfile} />}
+
+      {/* ── Trust section ── */}
+      <div style={{ background: C.bg, borderTop: `1px solid ${C.line}`, borderBottom: `1px solid ${C.line}` }} className="py-14">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <SectionLabel>Why SOLVO</SectionLabel>
+            <h2 className="font-black text-3xl mt-1" style={{ color: C.ink }}>Built on honesty, not promises.</h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {[
+              { icon: CheckCircle2, title: "Verified Professionals", desc: "Identity and skill checks before workers appear on the platform.", color: C.teal },
+              { icon: ShieldCheck, title: "Transparent Trust Badges", desc: "We show exactly what was checked — never overpromising.", color: C.indigo },
+              { icon: Star, title: "Real Ratings", desc: "Job-by-job ratings from real customers, publicly visible.", color: C.amber },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl p-6"
+                style={{ background: C.card, border: `1px solid ${C.line}`, boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}
+              >
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                  style={{ background: item.color + "18" }}>
+                  <item.icon size={22} color={item.color} />
+                </div>
+                <div className="font-bold text-base mb-1" style={{ color: C.ink }}>{item.title}</div>
+                <div className="text-sm leading-relaxed" style={{ color: C.muted }}>{item.desc}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Trust */}
-      <div style={{ background: "#EFF1EC" }} className="py-14">
-        <div className="max-w-6xl mx-auto px-6">
-          <SectionLabel>Trust, stated honestly</SectionLabel>
-          <h2 className="font-black text-2xl mb-6" style={{ color: C.indigo }}>We don't promise guarantees. We show you what's been checked.</h2>
-          <TrustBadgeExplainer />
+      {/* ── How it works ── */}
+      <div id="how" className="max-w-5xl mx-auto px-6 py-16">
+        <div className="text-center mb-10">
+          <SectionLabel>How SOLVO Works</SectionLabel>
+          <h2 className="font-black text-3xl mt-1" style={{ color: C.ink }}>From problem to paid — in minutes.</h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-5 mb-10">
+          {[
+            ["Choose a Service", "Select the type of work you need done.", "01"],
+            ["Describe the Work", "Type, speak, or upload a photo of the problem.", "02"],
+            ["Get Matched", "SOLVO finds verified nearby workers for you.", "03"],
+            ["Worker Accepts", "The worker reviews and accepts the job.", "04"],
+            ["Work Gets Done", "Track progress in real time.", "05"],
+            ["Pay and Rate", "Complete payment and leave a rating.", "06"],
+          ].map(([t, d, n]) => (
+            <div
+              key={t}
+              className="rounded-2xl p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              style={{ background: C.card, border: `1px solid ${C.line}`, boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}
+            >
+              <div className="text-3xl font-black mb-3" style={{ color: C.line }}>{n}</div>
+              <div className="font-bold mb-1" style={{ color: C.ink }}>{t}</div>
+              <div className="text-sm leading-relaxed" style={{ color: C.muted }}>{d}</div>
+            </div>
+          ))}
+        </div>
+        {/* Worker flow pill */}
+        <div
+          className="rounded-2xl p-5 flex flex-wrap items-center gap-2"
+          style={{ background: C.tealLight, border: `1px solid #B2E8DF` }}
+        >
+          <span className="text-xs font-bold tracking-widest uppercase mr-2" style={{ color: C.tealDeep }}>For Workers →</span>
+          {["Available", "Receive Job", "Accept", "Complete", "Earn"].map((s, i, arr) => (
+            <React.Fragment key={s}>
+              <span className="px-3 py-1.5 rounded-full text-sm font-semibold" style={{ background: "#fff", color: C.tealDeep, boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>{s}</span>
+              {i < arr.length - 1 && <ArrowRight size={14} color={C.teal} />}
+            </React.Fragment>
+          ))}
         </div>
       </div>
 
-      {/* Footer CTA */}
-      <div className="max-w-6xl mx-auto px-6 py-16 text-center">
-        <h2 className="font-black text-3xl mb-3" style={{ color: C.indigo }}>Every Skilled Hand Deserves an Opportunity.</h2>
-        <p className="mb-6" style={{ color: C.muted }}>See the complete journey — from a customer's request to a worker getting paid.</p>
-        <Btn variant="amber" size="lg" onClick={() => goto("demo")}>Watch the SOLVO demo journey</Btn>
+      {/* ── Access methods ── */}
+      <div id="access" style={{ background: C.bg, borderTop: `1px solid ${C.line}` }} className="py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <SectionLabel>Built for Real Access</SectionLabel>
+            <h2 className="font-black text-3xl mt-1" style={{ color: C.ink }}>One network. Four ways in.</h2>
+            <p className="mt-2 text-sm" style={{ color: C.muted }}>No smartphone required — every worker can access SOLVO.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              [Home, "Smartphone / Web", "Full app for customers, workers and admins."],
+              [Mic, "Voice Assistance", "Speak to accept jobs and check earnings."],
+              [Phone, "Basic Phone (IVR)", "Press 1 to accept. No internet needed."],
+              [Handshake, "Community Partners", "Local NGOs help workers get onboarded."],
+            ].map(([Icon, t, d]) => (
+              <div
+                key={t}
+                className="rounded-2xl p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                style={{ background: C.card, border: `1px solid ${C.line}`, boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}
+              >
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ background: C.tealLight }}>
+                  <Icon size={20} color={C.teal} />
+                </div>
+                <div className="font-bold mb-1 text-sm" style={{ color: C.ink }}>{t}</div>
+                <div className="text-xs leading-relaxed" style={{ color: C.muted }}>{d}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6">
+            <Btn variant="outline" icon={Phone} onClick={() => goto("access")}>See the IVR / SMS demo</Btn>
+          </div>
+        </div>
       </div>
-      <div className="text-center py-6 text-xs" style={{ color: C.muted }}>SOLVO · Work Without Barriers · MVP for Ghaziabad / Delhi NCR</div>
+
+      {/* ── Footer CTA ── */}
+      <div className="py-20 text-center px-6" style={{ background: C.teal }}>
+        <h2 className="font-black text-3xl text-white mb-3">Every Skilled Hand Deserves an Opportunity.</h2>
+        <p className="text-white/80 mb-8 text-base">See the full journey — from a customer's request to a worker getting paid.</p>
+        <Btn
+          size="lg"
+          onClick={() => goto("demo")}
+          style={{ background: "#fff", color: C.teal, boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }}
+        >
+          Watch the SOLVO Demo
+        </Btn>
+      </div>
+      <div className="text-center py-5 text-xs" style={{ color: C.mutedLight, background: "#fff" }}>
+        SOLVO · Work Without Barriers · MVP for Ghaziabad / Delhi NCR
+      </div>
     </div>
   );
 }
+
 
 /* ---------------------------------------------------------------------- */
 /* ROLE SELECT                                                            */
@@ -445,10 +947,10 @@ function RoleSelect({ goto }) {
     <div style={{ background: C.bg }} className="min-h-full flex items-center justify-center p-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div style={{ background: C.indigo }} className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3">
-            <span style={{ color: C.amber }} className="font-black text-2xl">S</span>
+          <div style={{ background: C.teal }} className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+            <span style={{ color: "#fff" }} className="font-black text-2xl">S</span>
           </div>
-          <h1 className="font-black text-2xl" style={{ color: C.indigo }}>Continue as</h1>
+          <h1 className="font-black text-2xl" style={{ color: C.ink }}>Continue as</h1>
           <p style={{ color: C.muted }} className="text-sm mt-1">Choose how you'd like to use SOLVO</p>
         </div>
         <div className="flex flex-col gap-3">
@@ -479,6 +981,7 @@ function CustomerApp({ goto, jobs, addJob, updateJob }) {
   const [draft, setDraft] = useState({ category: null, workType: null, desc: "", area: null, pricing: null });
   const [step, setStep] = useState(1);
   const [activeJobId, setActiveJobId] = useState(null);
+  const { profileUser, openProfile, closeProfile } = useProfileModal();
   const customerName = "Priya Sharma";
 
   const myJobs = jobs.filter((j) => j.customer === customerName || j.mine);
@@ -505,6 +1008,7 @@ function CustomerApp({ goto, jobs, addJob, updateJob }) {
 
   const activeJob = jobs.find((j) => j.id === activeJobId);
   const matchedWorkers = draft.category ? WORKERS.filter((w) => w.skill === draft.category).slice(0, 3) : WORKERS.slice(0, 3);
+
 
   return (
     <div style={{ background: C.bg }} className="min-h-full flex flex-col">
@@ -575,39 +1079,48 @@ function CustomerApp({ goto, jobs, addJob, updateJob }) {
         )}
 
         {view === "matching" && (
-          <div className="p-4 max-w-3xl mx-auto">
-            <div className="rounded-xl p-3 mb-4 text-sm" style={{ background: "#E7EAF3", color: C.indigo }}>
-              Recommended based on skills, availability, service area, pricing preferences, and work history.
-            </div>
-            <div className="flex flex-col gap-3">
-              {matchedWorkers.map((w, i) => (
-                <Card key={w.id} className="p-4">
-                  <div className="flex gap-3">
-                    <Avatar name={w.name} color={w.avatarColor} />
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <div className="font-bold">{w.name}</div>
-                        {i === 0 && <Badge tone="amber">Best Match</Badge>}
-                      </div>
-                      <div className="text-sm" style={{ color: C.muted }}>{catName(w.skill)} · {w.exp} experience</div>
-                      <div className="flex flex-wrap gap-3 mt-2 text-xs" style={{ color: C.muted }}>
-                        <span className="flex items-center gap-1"><MapPin size={12} />{w.area}</span>
-                        <span className="flex items-center gap-1"><IndianRupee size={12} />{w.rate}</span>
-                        <span className="flex items-center gap-1"><Star size={12} fill={C.amber} color={C.amber} />{w.rating} ({w.jobs} jobs)</span>
-                      </div>
-                      <div className="flex gap-1.5 mt-2 flex-wrap">
-                        {w.badges.includes("identity") && <Badge tone="indigo">✓ Identity Confirmed</Badge>}
-                        {w.badges.includes("skill") && <Badge tone="teal">✓ Skill Confirmed</Badge>}
-                        {w.badges.includes("community") && <Badge tone="amber">★ Community Trusted</Badge>}
+          <>
+            <div className="p-4 max-w-3xl mx-auto">
+              <div className="rounded-xl p-3 mb-4 text-sm" style={{ background: "#E7EAF3", color: C.indigo }}>
+                Recommended based on skills, availability, service area, pricing preferences, and work history.
+              </div>
+              <div className="flex flex-col gap-3">
+                {matchedWorkers.map((w, i) => (
+                  <Card key={w.id} className="p-4">
+                    <div className="flex gap-3">
+                      <Avatar name={w.name} color={w.avatarColor} profilePic={w.profilePic} onClick={() => openProfile(w)} />
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <button onClick={() => openProfile(w)} className="font-bold hover:underline text-left" style={{ color: C.ink }}>{w.name}</button>
+                          {i === 0 && <Badge tone="amber">Best Match</Badge>}
+                        </div>
+                        <div className="text-sm" style={{ color: C.muted }}>{catName(w.skill)} · {w.exp} experience</div>
+                        <div className="flex flex-wrap gap-3 mt-2 text-xs" style={{ color: C.muted }}>
+                          <span className="flex items-center gap-1"><MapPin size={12} />{w.area}</span>
+                          <span className="flex items-center gap-1"><IndianRupee size={12} />{w.rate}</span>
+                          <span className="flex items-center gap-1"><Star size={12} fill={C.amber} color={C.amber} />{w.rating} ({w.jobs} jobs)</span>
+                        </div>
+                        <div className="flex gap-1.5 mt-2 flex-wrap">
+                          {w.badges.includes("identity") && <Badge tone="indigo">✓ Identity Confirmed</Badge>}
+                          {w.badges.includes("skill") && <Badge tone="teal">✓ Skill Confirmed</Badge>}
+                          {w.badges.includes("community") && <Badge tone="amber">★ Community Trusted</Badge>}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <Btn full variant="teal" className="mt-3" onClick={() => pickWorker(w)}>Select {w.name.split(" ")[0]}</Btn>
-                </Card>
-              ))}
+                    <div className="flex gap-2 mt-3">
+                      <Btn variant="ghost" onClick={() => openProfile(w)}>View Profile</Btn>
+                      <Btn full variant="teal" onClick={() => pickWorker(w)}>Select {w.name.split(" ")[0]}</Btn>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
+            {profileUser && <ProfileModal user={profileUser} onClose={closeProfile} />}
+          </>
         )}
+
+
+
 
         {view === "tracking" && activeJob && (
           <div className="p-4 max-w-3xl mx-auto">
@@ -1075,6 +1588,7 @@ function VoiceAssistantModal({ onClose, setLang, setView, setAvailable }) {
 /* ---------------------------------------------------------------------- */
 function AdminApp({ goto, jobs }) {
   const [view, setView] = useState("overview");
+  const { profileUser: adminProfileUser, openProfile: adminOpenProfile, closeProfile: adminCloseProfile } = useProfileModal();
   const nav = [
     { key: "overview", label: "Dashboard", icon: LayoutDashboard },
     { key: "workers", label: "Workers", icon: HardHat },
@@ -1082,6 +1596,7 @@ function AdminApp({ goto, jobs }) {
     { key: "partners", label: "Partners", icon: Handshake },
   ];
   const catCounts = ALL_CATEGORIES.map((c) => ({ ...c, count: jobs.filter((j) => j.category === c.id).length }));
+
 
   return (
     <div style={{ background: C.bg }} className="min-h-full flex">
@@ -1136,24 +1651,29 @@ function AdminApp({ goto, jobs }) {
           )}
 
           {view === "workers" && (
-            <div className="flex flex-col gap-2">
-              {WORKERS.map((w) => (
-                <Card key={w.id} className="p-3 flex items-center gap-3">
-                  <Avatar name={w.name} color={w.avatarColor} size={40} />
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-sm">{w.name}</div>
-                    <div className="text-xs" style={{ color: C.muted }}>{catName(w.skill)} · {w.area} · {w.jobs} jobs</div>
-                  </div>
-                  <div className="hidden sm:flex gap-1.5">
-                    {w.badges.includes("identity") && <Badge tone="indigo">Identity</Badge>}
-                    {w.badges.includes("skill") && <Badge tone="teal">Skill</Badge>}
-                    {w.badges.includes("community") && <Badge tone="amber">Trusted</Badge>}
-                  </div>
-                  <Badge tone="grey"><Star size={11} fill={C.amber} color={C.amber} />{w.rating}</Badge>
-                </Card>
-              ))}
-            </div>
+            <>
+              <div className="flex flex-col gap-2">
+                {WORKERS.map((w) => (
+                  <Card key={w.id} className="p-3 flex items-center gap-3">
+                    <Avatar name={w.name} color={w.avatarColor} profilePic={w.profilePic} size={40} onClick={() => adminOpenProfile(w)} />
+                    <div className="flex-1 min-w-0">
+                      <button onClick={() => adminOpenProfile(w)} className="font-semibold text-sm hover:underline text-left" style={{ color: C.ink }}>{w.name}</button>
+                      <div className="text-xs" style={{ color: C.muted }}>{catName(w.skill)} · {w.area} · {w.jobs} jobs</div>
+                    </div>
+                    <div className="hidden sm:flex gap-1.5">
+                      {w.badges.includes("identity") && <Badge tone="indigo">Identity</Badge>}
+                      {w.badges.includes("skill") && <Badge tone="teal">Skill</Badge>}
+                      {w.badges.includes("community") && <Badge tone="amber">Trusted</Badge>}
+                    </div>
+                    <Badge tone="grey"><Star size={11} fill={C.amber} color={C.amber} />{w.rating}</Badge>
+                    <button onClick={() => adminOpenProfile(w)} className="text-xs font-semibold px-3 py-1.5 rounded-full transition-colors hover:bg-slate-100" style={{ color: C.teal, border: `1px solid ${C.line}` }}>Profile</button>
+                  </Card>
+                ))}
+              </div>
+              {adminProfileUser && <ProfileModal user={adminProfileUser} onClose={adminCloseProfile} />}
+            </>
           )}
+
 
           {view === "jobs" && (
             <div className="flex flex-col gap-2">
@@ -1391,7 +1911,7 @@ export default function App() {
   else content = <Landing goto={goto} />;
 
   return (
-    <div style={{ fontFamily: "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" }} className="min-h-screen w-full">
+    <div style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" }} className="min-h-screen w-full">
       {content}
     </div>
   );

@@ -9,4 +9,33 @@ html, body, #root {
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+  background: #ffffff;
+}
+
+::selection {
+  background: #d1faf3;
+  color: #0B7C6B;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+*:focus-visible {
+  outline: 2px solid #0E9C86;
+  outline-offset: 2px;
 }
