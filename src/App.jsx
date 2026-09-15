@@ -689,59 +689,136 @@ function Landing({ goto }) {
     <div style={{ background: "#ffffff", color: C.ink, fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif" }} className="min-h-full">
 
       {/* ── Sticky Nav ── */}
-      <nav
-        className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 max-w-7xl mx-auto"
-        style={{
-          background: "rgba(255,255,255,0.88)",
-          backdropFilter: "blur(14px)",
-          WebkitBackdropFilter: "blur(14px)",
-          borderBottom: `1px solid ${C.line}`,
-        }}
-      >
-        <div className="flex items-center gap-2.5">
-          <div style={{ background: C.teal }} className="w-8 h-8 rounded-xl flex items-center justify-center shadow-sm">
-            <span style={{ color: "#fff" }} className="font-black text-base">S</span>
+      <header style={{ background: "#fff", borderBottom: `1px solid ${C.line}` }} className="sticky top-0 z-30 w-full">
+        <nav className="flex items-center justify-between max-w-7xl mx-auto px-6 py-3.5">
+          {/* Logo */}
+          <div className="flex items-center gap-3 min-w-[160px]">
+            <div
+              className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm shrink-0"
+              style={{ background: `linear-gradient(135deg, ${C.teal} 0%, ${C.tealDeep} 100%)` }}
+            >
+              <span className="font-black text-white text-base tracking-tight">S</span>
+            </div>
+            <span className="font-black text-xl tracking-tight" style={{ color: C.ink }}>SOLVO</span>
+            <span
+              className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase"
+              style={{ background: C.tealLight, color: C.teal }}
+            >
+              Beta
+            </span>
           </div>
-          <span className="font-black text-lg tracking-tight" style={{ color: C.ink }}>SOLVO</span>
-        </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium" style={{ color: C.muted }}>
-          <a href="#workers" className="hover:text-teal-600 transition-colors" style={{ color: "inherit" }}>Workers</a>
-          <a href="#how" className="hover:text-teal-600 transition-colors" style={{ color: "inherit" }}>How it works</a>
-          <a href="#access" className="hover:text-teal-600 transition-colors" style={{ color: "inherit" }}>Access</a>
-        </div>
-        <div className="flex items-center gap-2">
-          <Btn variant="ghost" onClick={() => goto("roleSelect")}>Log in</Btn>
-          <Btn variant="teal" onClick={() => goto("roleSelect")}>Get Started</Btn>
-        </div>
-      </nav>
+
+          {/* Center links */}
+          <div className="hidden md:flex items-center gap-7 text-sm font-medium">
+            {[["#workers", "Workers"], ["#how", "How it works"], ["#access", "Access modes"], ["#trust", "Trust & Safety"]].map(([href, label]) => (
+              <a
+                key={href}
+                href={href}
+                style={{ color: C.muted, textDecoration: "none" }}
+                onMouseEnter={e => e.currentTarget.style.color = C.teal}
+                onMouseLeave={e => e.currentTarget.style.color = C.muted}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          {/* Right actions */}
+          <div className="flex items-center gap-2 min-w-[160px] justify-end">
+            <button
+              onClick={() => goto("login")}
+              className="px-4 py-2 rounded-full text-sm font-semibold transition-all hover:bg-slate-50"
+              style={{ color: C.inkLight, border: `1px solid ${C.line}` }}
+            >
+              Log in
+            </button>
+            <button
+              onClick={() => goto("login")}
+              className="px-5 py-2 rounded-full text-sm font-semibold text-white transition-all hover:opacity-90 hover:-translate-y-px shadow-sm"
+              style={{ background: `linear-gradient(135deg, ${C.teal} 0%, ${C.tealDeep} 100%)` }}
+            >
+              Get started
+            </button>
+          </div>
+        </nav>
+      </header>
 
       {/* ── Hero ── */}
-      <div className="max-w-3xl mx-auto px-6 pt-20 pb-16 text-center">
-        <Badge tone="teal">Ghaziabad · Delhi NCR · Now live</Badge>
-        <h1
-          className="mt-6 font-black leading-[1.08] tracking-tight"
-          style={{ fontSize: "clamp(2.6rem, 6vw, 4rem)", color: C.ink }}
-        >
-          Every skilled hand<br />
-          <span style={{ color: C.teal }}>deserves an opportunity.</span>
-        </h1>
-        <p className="mt-5 text-lg leading-relaxed mx-auto" style={{ color: C.muted, maxWidth: 520 }}>
-          SOLVO connects customers with verified local workers — through an app, by voice, or even a basic phone call.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Btn variant="teal" size="lg" icon={Search} onClick={() => goto("roleSelect", "customer")}>Find a Worker</Btn>
-          <Btn variant="outline" size="lg" icon={Briefcase} onClick={() => goto("roleSelect", "worker")}>Find Work</Btn>
-        </div>
-        {/* Stats strip */}
-        <div className="mt-14 grid grid-cols-3 gap-4 max-w-md mx-auto">
-          {[["8+", "Workers"], ["12+", "Bookings"], ["4.7★", "Avg Rating"]].map(([v, l]) => (
-            <div key={l} className="rounded-2xl p-4" style={{ background: C.bg, border: `1px solid ${C.line}` }}>
-              <div className="font-black text-xl" style={{ color: C.teal }}>{v}</div>
-              <div className="text-xs mt-0.5" style={{ color: C.muted }}>{l}</div>
-            </div>
-          ))}
+      <div
+        className="relative w-full overflow-hidden"
+        style={{
+          backgroundImage: "url('/hero-bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 30%",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Blue-dark overlay for text legibility */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(135deg, rgba(10,22,50,0.80) 0%, rgba(14,76,90,0.70) 60%, rgba(10,22,50,0.82) 100%)",
+          }}
+        />
+
+        {/* Hero content — all text white */}
+        <div className="relative z-10 max-w-3xl mx-auto px-6 pt-24 pb-20 text-center">
+          {/* Location badge — glass pill */}
+          <span
+            className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
+            style={{
+              background: "rgba(255,255,255,0.15)",
+              color: "#fff",
+              border: "1px solid rgba(255,255,255,0.25)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
+            📍 Ghaziabad · Delhi NCR · Now live
+          </span>
+
+          <h1
+            className="font-black leading-[1.08] tracking-tight text-white"
+            style={{ fontSize: "clamp(2.6rem, 6vw, 4rem)" }}
+          >
+            Every skilled hand<br />
+            <span style={{ color: "#5DEDD8" }}>deserves an opportunity.</span>
+          </h1>
+
+          <p className="mt-5 text-lg leading-relaxed mx-auto" style={{ color: "rgba(255,255,255,0.80)", maxWidth: 520 }}>
+            SOLVO connects customers with verified local workers — through an app, by voice, or even a basic phone call.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Btn variant="teal" size="lg" icon={Search} onClick={() => goto("roleSelect", "customer")}>Find a Worker</Btn>
+            <button
+              onClick={() => goto("roleSelect", "worker")}
+              className="inline-flex items-center justify-center gap-2 rounded-full font-semibold px-7 py-3.5 text-base transition-all hover:bg-white hover:text-slate-900"
+              style={{ border: "2px solid rgba(255,255,255,0.7)", color: "#fff", background: "transparent" }}
+            >
+              <Briefcase size={18} /> Find Work
+            </button>
+          </div>
+
+          {/* Stats strip — glass cards */}
+          <div className="mt-14 grid grid-cols-3 gap-4 max-w-md mx-auto">
+            {[["8+", "Workers"], ["12+", "Bookings"], ["4.7★", "Avg Rating"]].map(([v, l]) => (
+              <div
+                key={l}
+                className="rounded-2xl p-4"
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <div className="font-black text-xl" style={{ color: "#5DEDD8" }}>{v}</div>
+                <div className="text-xs mt-0.5 text-white/70">{l}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
 
       {/* ── Top Rated Workers ── */}
       <div id="workers" className="max-w-5xl mx-auto px-6 py-12">
@@ -926,9 +1003,167 @@ function Landing({ goto }) {
           Watch the SOLVO Demo
         </Btn>
       </div>
-      <div className="text-center py-5 text-xs" style={{ color: C.mutedLight, background: "#fff" }}>
-        SOLVO · Work Without Barriers · MVP for Ghaziabad / Delhi NCR
-      </div>
+
+      {/* ── Multi-column Footer ── */}
+      <footer style={{ background: "#F4F4F4", borderTop: "1px solid #E2E8F0" }}>
+        <div className="max-w-6xl mx-auto px-6 pt-10 pb-8">
+
+          {/* Logo row */}
+          <div className="flex items-center gap-2.5 mb-10">
+            <div
+              className="w-9 h-9 rounded-xl flex items-center justify-center font-black text-white text-base shadow-sm"
+              style={{ background: C.teal }}
+            >S</div>
+            <span className="font-black text-xl tracking-tight" style={{ color: C.ink }}>SOLVO</span>
+          </div>
+
+          {/* Four-column grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+
+            {/* Column 1 — Company */}
+            <div>
+              <div className="font-bold text-sm mb-4" style={{ color: C.ink }}>Company</div>
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  ["About us", "#"],
+                  ["How it works", "#how"],
+                  ["Careers", "#"],
+                  ["Terms & conditions", "#"],
+                  ["Privacy policy", "#"],
+                  ["Anti-discrimination policy", "#"],
+                ].map(([label, href]) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      className="text-sm transition-colors hover:underline"
+                      style={{ color: C.muted, textDecoration: "none" }}
+                      onMouseEnter={(e) => e.target.style.color = C.ink}
+                      onMouseLeave={(e) => e.target.style.color = C.muted}
+                    >{label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 2 — For Customers */}
+            <div>
+              <div className="font-bold text-sm mb-4" style={{ color: C.ink }}>For customers</div>
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  ["Find a worker", "#workers"],
+                  ["SOLVO reviews", "#"],
+                  ["Categories near you", "#categories"],
+                  ["How SOLVO works", "#how"],
+                  ["Contact us", "#"],
+                ].map(([label, href]) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      className="text-sm transition-colors hover:underline"
+                      style={{ color: C.muted, textDecoration: "none" }}
+                      onMouseEnter={(e) => e.target.style.color = C.ink}
+                      onMouseLeave={(e) => e.target.style.color = C.muted}
+                    >{label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3 — For Professionals */}
+            <div>
+              <div className="font-bold text-sm mb-4" style={{ color: C.ink }}>For professionals</div>
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  ["Register as a professional", "#"],
+                  ["Find work near you", "#"],
+                  ["Worker app guide", "#"],
+                  ["Earnings & payments", "#"],
+                  ["Voice assistance (IVR)", "#access"],
+                ].map(([label, href]) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      className="text-sm transition-colors hover:underline"
+                      style={{ color: C.muted, textDecoration: "none" }}
+                      onMouseEnter={(e) => e.target.style.color = C.ink}
+                      onMouseLeave={(e) => e.target.style.color = C.muted}
+                    >{label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 4 — Social Links */}
+            <div>
+              <div className="font-bold text-sm mb-4" style={{ color: C.ink }}>Social links</div>
+
+              {/* Social icon buttons */}
+              <div className="flex gap-2.5 mb-5">
+                {[
+                  /* X / Twitter */
+                  <svg key="x" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.732-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>,
+                  /* Facebook */
+                  <svg key="fb" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>,
+                  /* Instagram */
+                  <svg key="ig" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>,
+                  /* LinkedIn */
+                  <svg key="li" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>,
+                ].map((icon, i) => (
+                  <button
+                    key={i}
+                    className="w-9 h-9 rounded-full flex items-center justify-center transition-colors"
+                    style={{ border: `1.5px solid #CBD5E1`, background: "#fff", color: C.ink }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = C.ink; e.currentTarget.style.color = "#fff"; e.currentTarget.style.borderColor = C.ink; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = C.ink; e.currentTarget.style.borderColor = "#CBD5E1"; }}
+                  >
+                    {icon}
+                  </button>
+                ))}
+              </div>
+
+              {/* App store badges */}
+              <div className="flex flex-col gap-2.5">
+                {/* App Store */}
+                <button
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl transition-opacity hover:opacity-80"
+                  style={{ background: "#000", width: "fit-content" }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                  <div className="text-left">
+                    <div className="text-white/70 text-[9px] leading-none">Download on the</div>
+                    <div className="text-white font-bold text-sm leading-tight">App Store</div>
+                  </div>
+                </button>
+                {/* Google Play */}
+                <button
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl transition-opacity hover:opacity-80"
+                  style={{ background: "#000", width: "fit-content" }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.3.17.65.19.96.06l12.26-7.03-2.76-2.76L3.18 23.76zm-1.9-20.4C1.1 3.7 1 4.08 1 4.5v15c0 .42.1.8.28 1.14l.08.07 8.4-8.4v-.2L1.36 3.3l-.08.06zM20.54 10.3l-2.64-1.51-3.06 3.07 3.06 3.06 2.67-1.53c.76-.44.76-1.65-.03-2.09zM4.14.23L16.4 7.26l-2.76 2.76L3.18.3C3.49.17 3.84.2 4.14.23z"/></svg>
+                  <div className="text-left">
+                    <div className="text-white/70 text-[9px] leading-none">GET IT ON</div>
+                    <div className="text-white font-bold text-sm leading-tight">Google Play</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div style={{ height: 1, background: "#CBD5E1" }} className="mb-5" />
+
+          {/* Bottom legal bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <p className="text-xs" style={{ color: C.mutedLight }}>
+              © Copyright 2026 SOLVO Technologies Pvt. Ltd. All rights reserved.
+            </p>
+            <p className="text-xs" style={{ color: C.mutedLight }}>
+              MVP for Ghaziabad / Delhi NCR · Work Without Barriers
+            </p>
+          </div>
+        </div>
+      </footer>
+
     </div>
   );
 }
@@ -937,6 +1172,294 @@ function Landing({ goto }) {
 /* ---------------------------------------------------------------------- */
 /* ROLE SELECT                                                            */
 /* ---------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------- */
+/* LOGIN PAGE  — Twist-style two-column                                   */
+/* ---------------------------------------------------------------------- */
+function LoginPage({ goto }) {
+  const [email, setEmail] = useState("");
+  const [step, setStep] = useState("auth"); // "auth" | "role"
+  const [emailFocused, setEmailFocused] = useState(false);
+
+  return (
+    <div style={{ background: "#fff", minHeight: "100vh", fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif" }}>
+      {/* ── Top logo bar ── */}
+      <div className="px-8 py-5 flex items-center gap-3">
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm shrink-0"
+          style={{ background: `linear-gradient(135deg, ${C.teal} 0%, ${C.tealDeep} 100%)` }}
+        >
+          <span className="font-black text-white text-base">S</span>
+        </div>
+        <span className="font-black text-xl tracking-tight" style={{ color: C.ink }}>SOLVO</span>
+      </div>
+
+      {/* ── Two-column body ── */}
+      <div className="flex min-h-[calc(100vh-72px)]">
+
+        {/* ── Left: Auth panel ── */}
+        <div className="flex-1 flex items-start justify-center px-8 pt-16 pb-12">
+          <div className="w-full max-w-[340px]">
+
+            {step === "auth" ? (
+              <>
+                <h1 className="font-black text-[1.75rem] leading-tight mb-7" style={{ color: C.ink }}>
+                  Sign up or log in
+                </h1>
+
+                {/* Social buttons */}
+                <div className="flex flex-col gap-3 mb-5">
+                  {/* Google */}
+                  <button
+                    className="w-full flex items-center justify-center gap-3 rounded-xl py-3 text-sm font-semibold transition-all hover:bg-slate-50 active:scale-[0.98]"
+                    style={{ border: `1.5px solid ${C.lineStrong}`, color: C.ink }}
+                    onClick={() => alert("Google auth coming soon!")}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M17.64 9.205c0-.639-.057-1.252-.164-1.841H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615Z" fill="#4285F4"/>
+                      <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z" fill="#34A853"/>
+                      <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z" fill="#FBBC05"/>
+                      <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58Z" fill="#EA4335"/>
+                    </svg>
+                    Continue with Google
+                  </button>
+
+                  {/* Phone */}
+                  <button
+                    className="w-full flex items-center justify-center gap-3 rounded-xl py-3 text-sm font-semibold transition-all hover:bg-slate-50 active:scale-[0.98]"
+                    style={{ border: `1.5px solid ${C.lineStrong}`, color: C.ink }}
+                    onClick={() => alert("Phone auth coming soon!")}
+                  >
+                    <Phone size={17} />
+                    Continue with Phone
+                  </button>
+                </div>
+
+                {/* Divider */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div style={{ flex: 1, height: 1, background: C.line }} />
+                  <span className="text-xs font-medium" style={{ color: C.mutedLight }}>or</span>
+                  <div style={{ flex: 1, height: 1, background: C.line }} />
+                </div>
+
+                {/* Email field */}
+                <div className="mb-3">
+                  <label className="block text-xs font-semibold mb-1.5" style={{ color: C.inkLight }}>Email</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    onFocus={() => setEmailFocused(true)}
+                    onBlur={() => setEmailFocused(false)}
+                    placeholder="Enter your email..."
+                    className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
+                    style={{
+                      border: `1.5px solid ${emailFocused ? C.teal : C.lineStrong}`,
+                      color: C.ink,
+                      boxShadow: emailFocused ? `0 0 0 3px ${C.tealLight}` : "none",
+                    }}
+                  />
+                </div>
+
+                {/* Continue with email */}
+                <button
+                  onClick={() => setStep("role")}
+                  className="w-full rounded-xl py-3 text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-[0.98] mb-5"
+                  style={{ background: `linear-gradient(135deg, ${C.teal} 0%, ${C.tealDeep} 100%)` }}
+                >
+                  Continue with email
+                </button>
+
+                {/* Terms */}
+                <p className="text-[11px] leading-relaxed" style={{ color: C.mutedLight }}>
+                  By continuing, you agree to SOLVO's{" "}
+                  <span className="underline cursor-pointer" style={{ color: C.teal }}>Terms of Service</span>{" "}
+                  and{" "}
+                  <span className="underline cursor-pointer" style={{ color: C.teal }}>Privacy Policy</span>.
+                </p>
+
+                {/* Back link */}
+                <button
+                  onClick={() => goto("landing")}
+                  className="mt-8 text-xs font-semibold flex items-center gap-1 hover:opacity-70 transition-opacity"
+                  style={{ color: C.muted }}
+                >
+                  <ChevronLeft size={14} /> Back to home
+                </button>
+              </>
+            ) : (
+              /* ── Role picker step ── */
+              <>
+                <button
+                  onClick={() => setStep("auth")}
+                  className="flex items-center gap-1 text-xs font-semibold mb-6 hover:opacity-70 transition-opacity"
+                  style={{ color: C.muted }}
+                >
+                  <ChevronLeft size={14} /> Back
+                </button>
+                <h1 className="font-black text-[1.75rem] leading-tight mb-2" style={{ color: C.ink }}>
+                  How are you using SOLVO?
+                </h1>
+                <p className="text-sm mb-7" style={{ color: C.muted }}>Choose your role to continue.</p>
+
+                <div className="flex flex-col gap-3">
+                  {[
+                    { key: "customer", label: "I need work done", sub: "Customer — hire verified workers", icon: Search, color: C.teal },
+                    { key: "worker",   label: "I'm looking for work", sub: "Worker — find jobs near you", icon: Briefcase, color: C.indigo },
+                    { key: "admin",    label: "Platform administration", sub: "Admin — manage the platform", icon: LayoutDashboard, color: C.amber },
+                  ].map((r) => (
+                    <button
+                      key={r.key}
+                      onClick={() => goto(r.key)}
+                      className="w-full flex items-center gap-4 rounded-2xl px-4 py-4 text-left transition-all hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
+                      style={{ border: `1.5px solid ${C.lineStrong}`, background: "#fff" }}
+                    >
+                      <div
+                        className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                        style={{ background: r.color + "18" }}
+                      >
+                        <r.icon size={20} color={r.color} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-bold text-sm" style={{ color: C.ink }}>{r.label}</div>
+                        <div className="text-xs mt-0.5" style={{ color: C.muted }}>{r.sub}</div>
+                      </div>
+                      <ChevronRight size={17} color={C.mutedLight} />
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => goto("access")}
+                  className="mt-4 w-full flex items-center justify-center gap-2 rounded-2xl px-4 py-3.5 text-sm font-semibold transition-all hover:bg-slate-50"
+                  style={{ border: `1.5px dashed ${C.lineStrong}`, color: C.muted }}
+                >
+                  <Phone size={16} /> Use basic phone / IVR access
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* ── Right: Illustration panel ── */}
+        <div
+          className="hidden lg:flex flex-1 items-center justify-center relative overflow-hidden"
+          style={{ background: "#F8FAFB" }}
+        >
+          {/* Abstract geometric illustration */}
+          <div className="relative w-[380px] h-[320px]">
+            {/* Background amber sweep */}
+            <div
+              className="absolute"
+              style={{
+                width: 260, height: 180,
+                background: `linear-gradient(135deg, ${C.amber}BB 0%, ${C.amber}44 100%)`,
+                borderRadius: 24,
+                top: 60, left: 60,
+                transform: "rotate(-8deg)",
+              }}
+            />
+            {/* Teal accent strip */}
+            <div
+              className="absolute"
+              style={{
+                width: 220, height: 14,
+                background: `${C.tealDeep}CC`,
+                borderRadius: 99,
+                bottom: 80, left: 80,
+                transform: "rotate(-3deg)",
+              }}
+            />
+            <div
+              className="absolute"
+              style={{
+                width: 160, height: 10,
+                background: `${C.ink}55`,
+                borderRadius: 99,
+                bottom: 60, left: 100,
+                transform: "rotate(-3deg)",
+              }}
+            />
+            {/* Large cube */}
+            <div
+              className="absolute flex items-center justify-center"
+              style={{
+                width: 120, height: 120,
+                background: "linear-gradient(145deg, #e2e8f0 0%, #cbd5e1 100%)",
+                borderRadius: 20,
+                top: 40, left: 140,
+                boxShadow: "6px 6px 20px rgba(0,0,0,0.13)",
+              }}
+            >
+              <div
+                style={{
+                  width: 36, height: 50,
+                  border: `3px solid ${C.muted}`,
+                  borderRadius: 6,
+                  position: "relative",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute", top: "50%", left: "50%",
+                    transform: "translate(-50%,-50%)",
+                    width: 12, height: 16,
+                    borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
+                    background: C.muted,
+                  }}
+                />
+              </div>
+            </div>
+            {/* Small cube bottom-left */}
+            <div
+              className="absolute flex items-center justify-center"
+              style={{
+                width: 70, height: 70,
+                background: "linear-gradient(145deg, #e2e8f0 0%, #cbd5e1 100%)",
+                borderRadius: 14,
+                bottom: 90, left: 70,
+                boxShadow: "4px 4px 14px rgba(0,0,0,0.10)",
+              }}
+            >
+              <div style={{ width: 20, height: 28, border: `2.5px solid ${C.muted}`, borderRadius: 4 }} />
+            </div>
+            {/* Small cube bottom-right */}
+            <div
+              className="absolute flex items-center justify-center"
+              style={{
+                width: 65, height: 65,
+                background: "linear-gradient(145deg, #e2e8f0 0%, #cbd5e1 100%)",
+                borderRadius: 13,
+                bottom: 100, right: 80,
+                boxShadow: "4px 4px 14px rgba(0,0,0,0.10)",
+              }}
+            >
+              <div style={{ width: 18, height: 26, border: `2.5px solid ${C.muted}`, borderRadius: 4 }} />
+            </div>
+            {/* Orange circle */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                width: 40, height: 40,
+                background: `radial-gradient(circle at 35% 35%, #f97316, #ea580c)`,
+                top: 30, right: 100,
+                boxShadow: "0 4px 12px rgba(234,88,12,0.35)",
+              }}
+            />
+          </div>
+
+          {/* Bottom caption */}
+          <div className="absolute bottom-10 left-0 right-0 text-center">
+            <p className="text-sm font-semibold" style={{ color: C.mutedLight }}>
+              Work without barriers — NCR's trusted platform
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 function RoleSelect({ goto }) {
   const roles = [
     { key: "customer", label: "I need work done", sub: "Customer", icon: Search, color: C.teal },
@@ -972,6 +1495,7 @@ function RoleSelect({ goto }) {
     </div>
   );
 }
+
 
 /* ---------------------------------------------------------------------- */
 /* CUSTOMER APP                                                           */
@@ -1902,6 +2426,7 @@ export default function App() {
 
   let content;
   if (screen === "landing") content = <Landing goto={goto} />;
+  else if (screen === "login") content = <LoginPage goto={goto} />;
   else if (screen === "roleSelect") content = <RoleSelect goto={goto} />;
   else if (screen === "customer") content = <CustomerApp goto={goto} jobs={jobs} addJob={addJob} updateJob={updateJob} />;
   else if (screen === "worker") content = <WorkerApp goto={goto} jobs={jobs} addJob={addJob} updateJob={updateJob} />;
